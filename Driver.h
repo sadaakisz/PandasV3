@@ -43,4 +43,12 @@ public:
 		vDF.push_back(auxD);
 		f.close();
 	}
+	/*Dataframe* filter(long long idx, string nc1, string op1, string val1, string nc2 = "", string op2 = "", string val2 = "") {
+		colmap* nCols = new colmap();
+		for (long long i = 0; i < vDF.at(idx)->counterFil; i++) {
+			nCols = this->getDF(idx)->atF(i)->getColmap();
+		}
+		vector<Fila*>nFils;
+		Dataframe* nDF=new Dataframe
+	}*/
 };

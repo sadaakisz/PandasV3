@@ -84,9 +84,16 @@ void main() {
 	d1->printD();*/
 	Driver d1;
 	d1.addFile("exampledb.csv");
-	d1.getDF(0)->printD();
+	d1.getDF(0)->printD(), e();
+	//cout << d1.getDF(0)->atF(0)->getData("Nombres");
+	/*for (auto i = 0; i < d1.getDF(0)->counterFil; i++) {
+		for (auto it = d1.getDF(0)->atF(i)->getColmap()->begin(); it != d1.getDF(0)->atF(i)->getColmap()->end(); ++it) {
+			cout << (*it).second->getData(i) << " ";
+		}
+		e();
+	}*/
 	_getch();
-	d1.addFile("FL_insurance_sample.csv");
-	d1.getDF(1)->printD();
-	_getch();
+	//d1.addFile("FL_insurance_sample.csv");
+	//d1.getDF(1)->printD();
+	//_getch();
 }

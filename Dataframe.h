@@ -12,6 +12,9 @@ public:
 	long long counterFil = 0;
 
 	Dataframe(string i): id(i) {}
+	Dataframe(string colName, colmap* cm) {
+		
+	}
 	~Dataframe() {}
 
 	void addCol(Columna* c) {

@@ -14,4 +14,7 @@ public:
 	string getData(string name) {
 		return cols->at(name)->getData(indice);
 	}
+	colmap* getColmap() {
+		return cols;
+	}
 };
