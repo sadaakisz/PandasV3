@@ -12,8 +12,19 @@ public:
 	long long counterFil = 0;
 
 	Dataframe(string i): id(i) {}
-	Dataframe(string colName, colmap* cm) {
-		
+	Dataframe(colmap* cm) {
+		numCol = cm->size();
+		counterCol = cm->begin()->second->size();
+		for (auto it = cm->begin(); it != cm->end(); ++it) {
+			addCol((*it).second);
+		}
+		for (long long i = 0; i < counterCol; i++) {
+			Fila* auxF = new Fila(i);
+			for (long long j = 0; j < numCol;j++) {
+				auxF->addCol(this->atC(j));
+			}
+			this->addFil(auxF);
+		}
 	}
 	~Dataframe() {}
 

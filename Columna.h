@@ -27,6 +27,13 @@ public:
 	long long getIndice() { return indice; }
 	void setIndice(long long idx) { indice = idx; }
 
+	long long size() {
+		if (tipoColumna == "bool") return dBool->size();
+		else if (tipoColumna == "string") return dString->size();
+		else if (tipoColumna == "double") return dDouble->size();
+		else if (tipoColumna == "long") return dLong->size();
+	}
+
 	string checkType(string d) {
 		if (d == "true" || d == "false" || d == "1" || d == "0") return "bool";
 		else if (d[0] >= 65 && d[0] <= 122) return "string";

@@ -92,6 +92,9 @@ void main() {
 		}
 		e();
 	}*/
+	Dataframe* df2 = new Dataframe(d1.getDF(0)->atF(0)->getColmap());
+	d1.vDF.push_back(df2);
+	d1.getDF(1)->printD(), e();
 	_getch();
 	//d1.addFile("FL_insurance_sample.csv");
 	//d1.getDF(1)->printD();
