@@ -1,6 +1,6 @@
 #include <iostream>
 #include <conio.h>
-#include "Driver2.h"
+#include "Driver.h"
 using namespace std;
 void e() {
 	cout << endl;
@@ -84,6 +84,9 @@ void main() {
 	d1->printD();*/
 	Driver d1;
 	d1.addFile("exampledb.csv");
-	d1.dataframe->printD();
+	d1.getDF(0)->printD();
+	_getch();
+	d1.addFile("FL_insurance_sample.csv");
+	d1.getDF(1)->printD();
 	_getch();
 }

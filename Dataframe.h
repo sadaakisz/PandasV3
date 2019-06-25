@@ -7,6 +7,10 @@ private:
 	vector<Fila*>vFils;
 	string id;
 public:
+	long long numCol = 0;
+	long long counterCol = 0;
+	long long counterFil = 0;
+
 	Dataframe(string i): id(i) {}
 	~Dataframe() {}
 

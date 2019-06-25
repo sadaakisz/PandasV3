@@ -34,7 +34,7 @@ public:
 			if ((double)stoll(d) != stod(d)) return "double";
 			else if ((double)stoll(d) == stod(d)) return "long";
 		}
-		else return "string";
+		else return "unknown";
 	}
 	void agregar(string data) {
 		if (defined == 0) {

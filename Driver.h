@@ -4,43 +4,43 @@
 #include "Dataframe.h"
 class Driver {
 public:
-	Dataframe * dataframe;
-	long long numCol = 0;
-	long long counterCol = 0;
-	long long counterFil = 0;
+	vector<Dataframe*>vDF;
 public:
-	Driver() {
-		dataframe = new Dataframe("exampledb.csv");
-	}
+	Driver() {}
 	~Driver() {}
+	Dataframe* getDF(long long idx) {
+		return vDF.at(idx);
+	}
 	int addFile(string filename) {
+		Dataframe* auxD = new Dataframe(filename);
 		ifstream f(filename);
 		string line, num;
 		if (!f.is_open()) {
 			cout << "El archivo no se logro abrir\n";
 			return 0;
 		}
-		while (f >> line) {
+		while (getline(f,line,'\n')) {
 			stringstream ss(line);
-			if (numCol == 0) {
+			if (auxD->numCol == 0) {
 				while (getline(ss, num, ',')) {
-					Columna* auxCo = new Columna(num.c_str(), numCol);
-					dataframe->addCol(auxCo);
-					numCol++;
+					Columna* auxCo = new Columna(num.c_str(), auxD->numCol);
+					auxD->addCol(auxCo);
+					auxD->numCol++;
 				}
 			}
 			else {
-				Fila* auxF = new Fila(counterFil);
+				Fila* auxF = new Fila(auxD->counterFil);
 				while (getline(ss, num, ',')) {
-					dataframe->atC(counterCol)->agregar(num.c_str());
-					auxF->addCol(dataframe->atC(counterCol));
-					counterCol++;
+					auxD->atC(auxD->counterCol)->agregar(num.c_str());
+					auxF->addCol(auxD->atC(auxD->counterCol));
+					auxD->counterCol++;
 				}
-				dataframe->addFil(auxF);
-				counterFil++;
+				auxD->addFil(auxF);
+				auxD->counterFil++;
 			}
-			counterCol = 0;
+			auxD->counterCol = 0;
 		}
+		vDF.push_back(auxD);
 		f.close();
 	}
 };
