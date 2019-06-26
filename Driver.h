@@ -44,15 +44,6 @@ public:
 		f.close();
 		return 0;
 	}
-	void exportFile(Dataframe* df, string filename) {
-		ofstream archivo(filename, ios::out);
-		for (long long i = 0; i < df->filasSize(); i++) {
-			for (long long j = 0; j < df->colSize(); j++) {
-				archivo<<df->atF(i)->getData(df->nombreCols[j])<<",";
-			}
-			archivo << endl;
-		}
-	}
 	Dataframe* filter(long long idx, string nc1, string op1, string val1, string nc2 = "", string op2 = "", string val2 = "") {
 		Dataframe* nDF = new Dataframe(this->vDF[idx]);
 		for (long long i = 0; i < this->vDF[idx]->counterFil; i++) {
@@ -69,14 +60,22 @@ public:
 		else if (op1 == "igual") return igual(f->getData(nc1), val1);
 		else if (op1 == "inicia") return inicia(f->getData(nc1), val1);
 		else if (op1 == "finaliza") return finaliza(f->getData(nc1), val1);
+		else if (op1 == "contenido") return contenido(f->getData(nc1), val1);
+		else if (op1 == "noContenido") return noContenido(f->getData(nc1), val1);
 	}
 	bool mayor(string v1, string v2) {
 		if (v1[0] >= 48 && v1[0] <= 57) {
+			if (stod(v1) > stod(v2)) return 1;
+			else return 0;
 		}
 		if (v1 > v2) return 1;
 		return 0;
 	}
 	bool menor(string v1, string v2) {
+		if (v1[0] >= 48 && v1[0] <= 57) {
+			if (stod(v1) < stod(v2)) return 1;
+			else return 0;
+		}
 		if (v1 < v2) return 1;
 		return 0;
 	}
@@ -93,5 +92,17 @@ public:
 	bool finaliza(string v1, string v2) {
 		if (v1[v1.size() - 1] == v2[0]) return 1;
 		return 0;
+	}
+	bool contenido(string v1, string v2) {
+		for (long long i = 0; i < v1.size(); i++) {
+			if (v1[i] == v2[0]) return 1;
+		}
+		return 0;
+	}
+	bool noContenido(string v1, string v2) {
+		for (long long i = 0; i < v1.size(); i++) {
+			if (v1[i] == v2[0]) return 0;
+		}
+		return 1;
 	}
 };
