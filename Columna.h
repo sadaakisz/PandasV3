@@ -13,9 +13,9 @@ protected:
 	vector<double>*dDouble = nullptr;
 	vector<long long>*dLong = nullptr;
 
-	long long indice;
 	bool defined=0;
 public:
+	long long indice;
 	Columna(string nombre, long long idx) : nombreColumna(nombre), indice(idx) {}
 	~Columna() {}
 

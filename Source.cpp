@@ -95,10 +95,13 @@ void main() {
 	Dataframe* df2 = new Dataframe(d1.getDF(0));
 	d1.vDF.push_back(df2);
 	d1.getDF(1)->printD(), e();
-	d1.vDF.push_back(d1.filter(0, "Edad", "noContenido", "8"));
+	d1.vDF.push_back(d1.filter(0, "Nombres", "mayor", "G", "Apellidos", "contenido", "v"));
 	d1.getDF(2)->printD(), e();
+	vector<string>nCols;
+	nCols.push_back("Edad");
+	nCols.push_back("Vivo");
+	//d1.vDF.push_back(d1.select(0, nCols));
+	//d1.getDF(3)->printD(), e();
 	_getch();
-	//d1.addFile("FL_insurance_sample.csv");
-	//d1.getDF(1)->printD();
 	//_getch();
 }

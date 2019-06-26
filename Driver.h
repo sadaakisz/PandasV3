@@ -44,6 +44,7 @@ public:
 		f.close();
 		return 0;
 	}
+
 	Dataframe* filter(long long idx, string nc1, string op1, string val1, string nc2 = "", string op2 = "", string val2 = "") {
 		Dataframe* nDF = new Dataframe(this->vDF[idx]);
 		for (long long i = 0; i < this->vDF[idx]->counterFil; i++) {
@@ -104,5 +105,21 @@ public:
 			if (v1[i] == v2[0]) return 0;
 		}
 		return 1;
+	}
+
+	Dataframe* select(long long idx, vector<string>nCols) {
+		Dataframe* nDF = new Dataframe("select_"+this->vDF[idx]->id);
+		for (long long i = 0; i < this->vDF.at(idx)->colSize(); i++) {
+			if (nCols[i] == this->vDF[idx]->atC(i)->getNombre()) {
+				nDF->addCol(this->vDF[idx]->atC(i));
+			}
+		}
+		vector<Fila*>nF;
+		for (long long i = 0; i < this->vDF[idx]->filasSize(); i++) {
+			for (long long j = 0; j < nDF->colSize(); j++) {
+				nDF->addFil(this->vDF[idx]->atF(j));
+			}
+		}
+		return nDF;
 	}
 };
