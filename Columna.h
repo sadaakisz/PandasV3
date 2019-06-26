@@ -65,5 +65,6 @@ public:
 		else if (tipoColumna == "string") return dString->at(index);
 		else if (tipoColumna == "double") return to_string(dDouble->at(index));
 		else if (tipoColumna == "long") return to_string(dLong->at(index));
+		else return "string";
 	}
 };

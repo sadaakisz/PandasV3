@@ -7,34 +7,27 @@ private:
 	vector<Fila*>vFils;
 	string id;
 public:
+	vector<string>nombreCols;
 	long long numCol = 0;
 	long long counterCol = 0;
 	long long counterFil = 0;
 
 	Dataframe(string i): id(i) {}
-	Dataframe(colmap* cm) {
-		numCol = cm->size();
-		counterCol = cm->begin()->second->size();
-		for (auto it = cm->begin(); it != cm->end(); ++it) {
-			addCol((*it).second);
-		}
-		for (long long i = 0; i < counterCol; i++) {
-			Fila* auxF = new Fila(i);
-			for (long long j = 0; j < numCol;j++) {
-				auxF->addCol(this->atC(j));
-			}
-			this->addFil(auxF);
+	Dataframe(Dataframe* df) {
+		for (long long i = 0; i < df->nombreCols.size(); i++) {
+			addCol(df->atF(0)->getColmap()->at(df->nombreCols[i]));
+			numCol++;
 		}
 	}
 	~Dataframe() {}
 
 	void addCol(Columna* c) {
 		vCols.push_back(c);
+		nombreCols.push_back(c->getNombre());
 	}
 	void addFil(Fila* f) {
 		vFils.push_back(f);
 	}
-
 	Columna* atC(long long idx) { return vCols.at(idx); }
 	Fila* atF(long long idx) { return vFils.at(idx); }
 
