@@ -44,6 +44,15 @@ public:
 		f.close();
 		return 0;
 	}
+	void exportFile(Dataframe* df, string filename) {
+		ofstream archivo(filename, ios::out);
+		for (long long i = 0; i < df->filasSize(); i++) {
+			for (long long j = 0; j < df->colSize(); j++) {
+				archivo<<df->atF(i)->getData(df->nombreCols[j])<<",";
+			}
+			archivo << endl;
+		}
+	}
 	Dataframe* filter(long long idx, string nc1, string op1, string val1, string nc2 = "", string op2 = "", string val2 = "") {
 		Dataframe* nDF = new Dataframe(this->vDF[idx]);
 		for (long long i = 0; i < this->vDF[idx]->counterFil; i++) {

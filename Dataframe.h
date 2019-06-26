@@ -24,9 +24,11 @@ public:
 	void addCol(Columna* c) {
 		vCols.push_back(c);
 		nombreCols.push_back(c->getNombre());
+		//numCol++;
 	}
 	void addFil(Fila* f) {
 		vFils.push_back(f);
+		//counterFil++;
 	}
 	Columna* atC(long long idx) { return vCols.at(idx); }
 	Fila* atF(long long idx) { return vFils.at(idx); }
@@ -43,4 +45,6 @@ public:
 			cout << endl;
 		}
 	}
+	long long filasSize() { return vFils.size(); }
+	long long colSize() { return vCols.size(); }
 };
