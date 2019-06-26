@@ -1,0 +1,21 @@
+#pragma once
+#include <vector>
+using namespace std;
+
+void merge(vector<int> &a, long long ini, long long fin) {
+	long long length = 0;
+	vector<long long> aux(length);
+	long long mid = (fin - ini) / 2;
+	long long i = ini;
+	long long j = mid + 1;
+	for (long long k = 0; i <= mid || j <= fin; k++) {
+		if (i > mid || j <= fin && a[j] < a[i]) {
+			aux[k] = a[j];
+			j++;
+		}
+		else {
+			aux[k] = a[i];
+			i++;	
+		}
+		//for(long long k =0; k) terminar
+}
