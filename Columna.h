@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Fila.h"
 using namespace std;
 
 class Columna {
@@ -13,6 +14,7 @@ protected:
 	vector<string>*dString = nullptr;
 	vector<double>*dDouble = nullptr;
 	vector<long long>*dLong = nullptr;
+
 public:
 	long long indice;
 	Columna(string nombre, long long idx) : nombreColumna(nombre), indice(idx) {}

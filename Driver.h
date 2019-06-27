@@ -97,11 +97,11 @@ public:
 
 	Dataframe* select(long long idx, vector<string>nCols) {
 		Dataframe* nDF = new Dataframe("select_"+this->vDF[idx]->id);
-		
 		for (long long i = 0; i < nCols.size(); i++) {
 			for (long long j = 0; j < this->vDF.at(idx)->colSize(); j++) {
 				if (nCols[i] == this->vDF[idx]->atC(j)->getNombre()) {
 					nDF->addCol(this->vDF[idx]->atC(j));
+					j = this->vDF.at(idx)->colSize() - 1;
 				}
 			}
 		}
@@ -113,5 +113,13 @@ public:
 			nDF->addFil(auxF);
 		}
 		return nDF;
+	}
+
+	void index(long long idx, string nombreColumna) {
+		AVLTree<Fila*, string>*t = new AVLTree<Fila*, string>([=](Fila*f) { return f->getData(nombreColumna); });
+		for (auto row : this->vDF[idx]->getFils()) {
+			t->Add(row);
+		}
+		this->vDF[idx]->setTree(nombreColumna, t);
 	}
 };

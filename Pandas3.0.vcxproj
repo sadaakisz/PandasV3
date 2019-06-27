@@ -132,7 +132,15 @@
     <ClInclude Include="Driver.h" />
     <ClInclude Include="Fila.h" />
     <ClInclude Include="FilterMethods.h" />
+    <ClInclude Include="IndexMethods.h" />
     <ClInclude Include="SortMethods.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

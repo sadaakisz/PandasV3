@@ -24,5 +24,12 @@ void main() {
 	d1.getDF(4)->printD(), e();
 	d1.vDF.push_back(d1.mergesort(0, "Edad"));
 	d1.getDF(5)->printD(), e();
+	d1.index(0, "Apellidos");
+	//d1.vDF[0]->getMapTree()["Apellidos"]->getNode()->e;
+	e();
+	cout << d1.vDF[0]->getMapTree()["Apellidos"]->Height(), e();
+	d1.index(2, "Apellidos");
+	e();
+	cout << d1.vDF[2]->getMapTree()["Apellidos"]->Height(), e();
 	_getch();
 }

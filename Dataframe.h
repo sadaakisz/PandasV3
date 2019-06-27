@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 #include "Fila.h"
+#include "IndexMethods.h"
 class Dataframe {
 private:
 	vector<Columna*>vCols;
 	vector<Fila*>vFils;
+	map<string, AVLTree<Fila*, string>*> mapTree;
 public:
 	string id;
 	vector<string>nombreCols;
@@ -50,4 +52,7 @@ public:
 
 	long long filasSize() { return vFils.size(); }
 	long long colSize() { return vCols.size(); }
+
+	map<string, AVLTree<Fila*, string>*> getMapTree() { return mapTree; }
+	void setTree(string nombreColumna, AVLTree<Fila*, string>*auxT) { mapTree[nombreColumna] = auxT;}
 };
