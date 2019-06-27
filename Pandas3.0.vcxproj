@@ -131,6 +131,8 @@
     <ClInclude Include="Dataframe.h" />
     <ClInclude Include="Driver.h" />
     <ClInclude Include="Fila.h" />
+    <ClInclude Include="FilterMethods.h" />
+    <ClInclude Include="SortMethods.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

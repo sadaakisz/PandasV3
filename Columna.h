@@ -5,6 +5,7 @@ using namespace std;
 
 class Columna {
 protected:
+	bool defined = 0;
 	string nombreColumna;
 	string tipoColumna="undefined";
 	
@@ -12,8 +13,6 @@ protected:
 	vector<string>*dString = nullptr;
 	vector<double>*dDouble = nullptr;
 	vector<long long>*dLong = nullptr;
-
-	bool defined=0;
 public:
 	long long indice;
 	Columna(string nombre, long long idx) : nombreColumna(nombre), indice(idx) {}
@@ -23,9 +22,6 @@ public:
 	void setNombre(string nombre) { nombreColumna = nombre; }
 
 	string getTipo() { return tipoColumna; }
-
-	long long getIndice() { return indice; }
-	void setIndice(long long idx) { indice = idx; }
 
 	long long size() {
 		if (tipoColumna == "bool") return dBool->size();
