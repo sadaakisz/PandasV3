@@ -33,7 +33,7 @@ void logo() {
 }
 void intro() {
 	Console::SetWindowPosition(0, 0);
-	Console::SetWindowSize(213, 52);
+	Console::SetWindowSize(137, 35);
 	string filename;
 	//setlocale(LC_ALL, "spanish");
 	logo();
@@ -73,7 +73,7 @@ void ordenar() {
 	cin >> nombreColumna, e();
 	d1.vDF.push_back(d1.mergesort(idxDF - 1, nombreColumna)), idxDF++;
 	cout << "Ordenamiento exitoso! Imprimiendo el nuevo dataframe generado: ";
-	d1.vDF[idxDF-1]->printD(), e(), e();
+	d1.vDF[d1.vDF.size() - 1]->printD(), e(), e();
 }
 void seleccionar() {
 	vector<string>nCols;
@@ -90,7 +90,7 @@ void seleccionar() {
 		nCols.push_back(col);
 	}
 	e(), d1.vDF.push_back(d1.select(idxDF - 1, nCols)), idxDF++;
-	d1.vDF[idxDF - 1]->printD(), e(), e();
+	d1.vDF[d1.vDF.size() - 1]->printD(), e(), e();
 }
 void filtrar() {
 	string nc1, op1, val1, nc2="", op2="", val2="";
@@ -114,8 +114,8 @@ void filtrar() {
 		cout << "Ingrese el valor de la operacion " << dos << " para filtrar: ", e();
 		cin >> val2, e();
 	}
-	d1.vDF.push_back(d1.filter(idxDF, nc1, op1, val1, nc2, op2, val2)), idxDF++;
-	d1.vDF[idxDF - 1]->printD(), e(), e();
+	d1.vDF.push_back(d1.filter(idxDF-1, nc1, op1, val1, nc2, op2, val2));
+	d1.vDF[d1.vDF.size()-1]->printD(), e(), e();
 }
 void exportF() {
 	string nombreDF;
