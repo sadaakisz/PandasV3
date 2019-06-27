@@ -45,13 +45,35 @@ void intro() {
 	}
 	e();
 	d1.addFile(filename), idxDF++;
-	cout << "Mostrando Dataframe 1_", e(), e();
 	d1.getDF(idxDF)->printD(), e();
 }
 void mostrar() {
 	cout << "Introduzca el indice del dataframe a mostrar: ";
+	e(), d1.printvDF(), e(), e();
 	cin >> idxDF;
-	d1.getDF(idxDF)->printD(), e();
+	d1.getDF(idxDF-1)->printD(), e();
+}
+void indexar() {
+	string nombreColumna;
+	cout << "Introduzca el indice del dataframe a indexar: ";
+	e(), d1.printvDF(), e();
+	cin >> idxDF, e();
+	cout << "Introduzca el nombre de la columna del dataframe a indexar: ", e(), e();
+	cin >> nombreColumna, e();
+	d1.index(idxDF-1, nombreColumna);
+	cout << "Indexado exitoso! La altura del arbol generado es: ";
+	cout<< d1.vDF[idxDF - 1]->getMapTree()[nombreColumna]->Height(), e(), e();
+}
+void ordenar() {
+	string nombreColumna;
+	cout << "Introduzca el indice del dataframe a ordenar: ";
+	e(), d1.printvDF(), e();
+	cin >> idxDF, e();
+	cout << "Introduzca el nombre de la columna del dataframe a ordenar: ", e(), e();
+	cin >> nombreColumna, e();
+	d1.vDF.push_back(d1.mergesort(idxDF - 1, nombreColumna)), idxDF++;
+	cout << "Ordenamiento exitoso! Imprimiendo el nuevo dataframe generado: ";
+	d1.vDF[idxDF-1]->printD(), e(), e();
 }
 void opciones() {
 	cout << "\tOpciones:", e(), e();
@@ -82,8 +104,10 @@ void menu() {
 			mostrar();
 			break;
 		case '3':
+			indexar();
 			break;
 		case '4':
+			ordenar();
 			break;
 		case '5':
 			break;

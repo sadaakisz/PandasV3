@@ -127,4 +127,9 @@ public:
 		}
 		this->vDF[idx]->setTree(nombreColumna, t);
 	}
+	void printvDF() {
+		for (long long i = 0; i < vDF.size();i++) {
+			cout << endl << i + 1<<". " <<vDF[i]->id << endl;
+		}
+	}
 };

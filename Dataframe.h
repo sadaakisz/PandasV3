@@ -20,6 +20,7 @@ public:
 			addCol(df->atF(0)->getColmap()->at(df->nombreCols[i]));
 			numCol++;
 		}
+		id = "modded_"+df->id;
 	}
 	~Dataframe() {}
 
@@ -38,6 +39,7 @@ public:
 	Fila* atF(long long idx) { return vFils.at(idx); }
 
 	void printD() {
+		cout << "Mostrando Dataframe "<< id << endl << endl;
 		for (long long i = 0; i < vCols.size(); i++) {
 			if (vCols[i]->getNombre().size() < 8) {
 				cout << vCols[i]->getNombre() << "\t\t";
