@@ -75,6 +75,21 @@ void ordenar() {
 	cout << "Ordenamiento exitoso! Imprimiendo el nuevo dataframe generado: ";
 	d1.vDF[idxDF-1]->printD(), e(), e();
 }
+void seleccionar() {
+	vector<string>nCols;
+	string col;
+	cout << "Introduzca el indice del dataframe a indexar: ";
+	e(), d1.printvDF(), e();
+	cin >> idxDF, e();
+	int numero;
+	cin >> numero;
+	for (int i = 0; i < numero; i++) {
+		e(), cout << "Nombre de la columna 1: ";
+		cin >> col;
+		nCols.push_back(col);
+	}
+	//d1.vDF.push_back(d1.select(idxDF - 1, nCols)), idxDF++;
+}
 void opciones() {
 	cout << "\tOpciones:", e(), e();
 	cout << "\t1. Importar archivo", e();
