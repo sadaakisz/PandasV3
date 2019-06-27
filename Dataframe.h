@@ -39,12 +39,28 @@ public:
 
 	void printD() {
 		for (long long i = 0; i < vCols.size(); i++) {
-			cout << vCols[i]->getNombre() << "\t";
+			if (vCols[i]->getNombre().size() < 8) {
+				cout << vCols[i]->getNombre() << "\t\t";
+			}
+			else if (vCols[i]->getNombre().size() >= 8) {
+				for (int u = 0; u < 8; u++) {
+					cout << vCols[i]->getNombre()[u];
+				}
+				cout << "..\t";
+			}
 		}
 		cout << endl;
 		for (long long i = 0; i < vFils.size(); i++) {
 			for (long long j = 0; j < vCols.size(); j++) {
-				cout << vFils[i]->getData(vCols[j]->getNombre()) << "\t";
+				if (vFils[i]->getData(vCols[j]->getNombre()).size() < 8) {
+					cout << vFils[i]->getData(vCols[j]->getNombre()) << "\t\t";
+				}
+				else if (vFils[i]->getData(vCols[j]->getNombre()).size() >= 8) {
+					for (int u = 0; u < 8; u++) {
+						cout<<vFils[i]->getData(vCols[j]->getNombre())[u];
+					}
+					cout << "..\t";
+				}
 			}
 			cout << endl;
 		}
