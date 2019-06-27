@@ -33,7 +33,7 @@ void logo() {
 }
 void intro() {
 	Console::SetWindowPosition(0, 0);
-	Console::SetWindowSize(230, 60);
+	Console::SetWindowSize(213, 52);
 	string filename;
 	//setlocale(LC_ALL, "spanish");
 	logo();
@@ -78,17 +78,53 @@ void ordenar() {
 void seleccionar() {
 	vector<string>nCols;
 	string col;
-	cout << "Introduzca el indice del dataframe a indexar: ";
+	cout << "Introduzca el indice del dataframe a seleccionar: ";
 	e(), d1.printvDF(), e();
 	cin >> idxDF, e();
+	cout << "Ingrese el numero de columnas a seleccionar: ", e();
 	int numero;
 	cin >> numero;
 	for (int i = 0; i < numero; i++) {
-		e(), cout << "Nombre de la columna 1: ";
+		e(), cout << "Nombre de la columna "<<i+1<< ": ";
 		cin >> col;
 		nCols.push_back(col);
 	}
-	//d1.vDF.push_back(d1.select(idxDF - 1, nCols)), idxDF++;
+	e(), d1.vDF.push_back(d1.select(idxDF - 1, nCols)), idxDF++;
+	d1.vDF[idxDF - 1]->printD(), e(), e();
+}
+void filtrar() {
+	string nc1, op1, val1, nc2="", op2="", val2="";
+	int dos = 0;
+	cout << "Introduzca el indice del dataframe a filtrar: ";
+	e(), d1.printvDF(), e();
+	cin >> idxDF, e();
+	cout << "Ingrese el numero de columnas a filtrar: ", e();
+	cin >> dos;
+	cout << "Ingrese el nombre de la columna " << dos-1 << " a filtrar: ", e();
+	cin >> nc1, e();
+	cout << "Ingrese la operacion " << dos-1 << " para filtrar: ", e();
+	cin >> op1, e();
+	cout << "Ingrese el valor de la operacion " << dos-1 << " para filtrar: ", e();
+	cin >> val1, e();
+	if (dos==2) {
+		cout << "Ingrese el nombre de la columna "<<dos<<" a filtrar: ", e();
+		cin >> nc2, e();
+		cout << "Ingrese la operacion " << dos << " para filtrar: ", e();
+		cin >> op2, e();
+		cout << "Ingrese el valor de la operacion " << dos << " para filtrar: ", e();
+		cin >> val2, e();
+	}
+	d1.vDF.push_back(d1.filter(idxDF, nc1, op1, val1, nc2, op2, val2)), idxDF++;
+	d1.vDF[idxDF - 1]->printD(), e(), e();
+}
+void exportF() {
+	string nombreDF;
+	cout << "Introduzca el indice del dataframe a exportar: ";
+	e(), d1.printvDF(), e();
+	cin >> idxDF, e();
+	cout << "Ingrese el nombre del archivo a exportar: ", e();
+	cin >> nombreDF;
+	d1.exportFile(d1.vDF[idxDF-1], nombreDF);
 }
 void opciones() {
 	cout << "\tOpciones:", e(), e();
@@ -125,10 +161,13 @@ void menu() {
 			ordenar();
 			break;
 		case '5':
+			seleccionar();
 			break;
 		case '6':
+			filtrar();
 			break;
 		case '7':
+			exportF();
 			break;
 		default:
 			break;
