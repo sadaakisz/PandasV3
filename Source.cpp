@@ -48,8 +48,13 @@ void intro() {
 	cout << "Mostrando Dataframe 1_", e(), e();
 	d1.getDF(idxDF)->printD(), e();
 }
+void mostrar() {
+	cout << "Introduzca el indice del dataframe a mostrar: ";
+	cin >> idxDF;
+	d1.getDF(idxDF)->printD(), e();
+}
 void opciones() {
-	e();
+	cout << "\tOpciones:", e(), e();
 	cout << "\t1. Importar archivo", e();
 	cout << "\t2. Mostrar Dataframe", e();
 	cout << "\t3. Indexar Dataframe", e();
@@ -61,30 +66,35 @@ void opciones() {
 }
 void menu() {
 	intro();
-	opciones();
 	string opcion;
-	do {
-		cin >> opcion;
-	} while (opcion[0] < 48 || opcion[0] > 57);
-	switch (opcion[0])
-	{
-	case '1':
-		importF();
-		break;
-	case '2':
-		break;
-	case '3':
-		break;
-	case '4':
-		break;
-	case '5':
-		break;
-	case '6':
-		break;
-	default:
-		break;
+	while (opcion != "8") {
+		opciones();
+		do {
+			cin >> opcion;
+		} while (opcion[0] < 48 || opcion[0] > 57);
+		Console::Clear();
+		switch (opcion[0])
+		{
+		case '1':
+			importF();
+			break;
+		case '2':
+			mostrar();
+			break;
+		case '3':
+			break;
+		case '4':
+			break;
+		case '5':
+			break;
+		case '6':
+			break;
+		case '7':
+			break;
+		default:
+			break;
+		}
 	}
-	_getch();
 }
 void main() {
 	/*
