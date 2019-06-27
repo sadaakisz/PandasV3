@@ -4,9 +4,10 @@
 class Dataframe {
 private:
 	vector<Columna*>vCols;
-	vector<Fila*>vFils;
+	
 public:
 	string id;
+	vector<Fila*>vFils; //se paso a public para merge, revisar
 	vector<string>nombreCols;
 	long long numCol = 0;
 	long long counterCol = 0;
@@ -45,6 +46,7 @@ public:
 			cout << endl;
 		}
 	}
+
 	long long filasSize() { return vFils.size(); }
 	long long colSize() { return vCols.size(); }
 };

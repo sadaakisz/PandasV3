@@ -100,6 +100,10 @@ void main() {
 	vector<string>nCols;
 	nCols.push_back("Edad");
 	nCols.push_back("Vivo");
+	d1.mergesort(d1.vDF[0]->vFils, "Apellidos");
+	d1.getDF(0)->printD(), e();
+	d1.mergesort(d1.vDF[0]->vFils, "Edad");
+	d1.getDF(0)->printD(), e();
 	//d1.vDF.push_back(d1.select(0, nCols));
 	//d1.getDF(3)->printD(), e();
 	_getch();
